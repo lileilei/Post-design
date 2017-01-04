@@ -1,0 +1,42 @@
+#home {
+  min-height: 100%;
+}
+
+.leftMenu {
+  position: fixed;
+  width: 140px;
+  top: 60px;
+  left: 0;
+  bottom: 0;
+  z-index: 999;
+  text-align: center;
+  background: #FDFEFE;
+  box-shadow: 1px 3px 10px 0 #EDC5B5;
+  transition: top 0.5s;
+  font-size: 14px;
+  ul li a {
+    display: block;
+    padding: 14px;
+    margin: 36px auto 0;
+    width: 100px;
+    color: #4A90E2;
+    border-radius: 5px;
+    transition: all 0.4s;
+    img {
+      width: 40px;
+      margin-bottom: 5px;
+    }
+    &:hover,
+    &.route--active {
+      background-color: #F6DDD3;
+    }
+  }
+}
+
+.rightContent {
+  margin-left: 150px;
+  margin-right: 10px;
+  min-height: 100%;
+  padding-top: 60px;
+  overflow: hidden;
+}

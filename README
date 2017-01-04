@@ -1,0 +1,31 @@
+一.ACTION 规范
+
+  1.ACTION
+    命名规范： 当前页面_功能模块_请求类型
+    例如： SERVICES_LIST_GET  解读：服务页面的列表请求
+    说明： 如果此模块列表请求类型多个 SERVICES_LIST_GET_TYPE
+
+  2.注释(数据类型简单，可只写功能即可)
+    /*
+     * 服务列表请求
+     * @param list.state (Boolean): 请求列表状态
+     * @param list.rows  (Array)  : 服务列表
+     * @param type (Number)       : 1.新服务 2.老服务
+     */
+    export const　SERVICES_LIST_GET = 'SERVICES_LIST_GET'
+    export function getServiceListType(list){
+      return {
+        type:SERVICES_LIST_GET,
+        list.state,
+        list.rows
+      }
+    }
+    export function getServiceList(opts,type){
+        return (dispatch, getState) => {
+          ...
+        }
+    }
+二.样式规范
+  1.每个页面必须一个页面id包裹，内部样式全部写的里面
+  2.能公用的不重复写
+  3.能用蚂蚁的样式不自己写样式
