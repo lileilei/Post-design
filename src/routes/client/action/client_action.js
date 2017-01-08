@@ -11,7 +11,7 @@ export function getResultType(result) {
 }
 export function getResult(opts, type) {
   return (dispatch, getState) => {
-    return axios.get('/', qs.stringify(opts))
+    return axios.get('/api/getProduction', qs.stringify(opts))
       .then(function (result) {
         dispatch(getResultType(result.data))
       }).catch(function (error) {

@@ -1,6 +1,4 @@
 #client {
-  margin-top: 60px;
-  padding: 20px;
   .params{
     padding: 10px 0;
     line-height: 28px;
@@ -8,6 +6,39 @@
       font-size: 16px;
       margin-left: 10px;
       cursor: pointer;
+    }
+  }
+  .reqLinkList{
+    li{
+      line-height: 30px;
+      cursor: pointer;
+      &.active{
+        color: #ffa908;
+      }
+    }
+  }
+  .response{
+    margin-left: 10px;
+    .resultInfo{
+      padding: 10px;
+      height: 100px;
+      border: 1px solid #d9d9d9;
+      i{
+        margin-right: 10px;
+        &.ok{
+          color: greenyellow;
+        }
+        &.error{
+          color: #f04134;
+        }
+      }
+      .resheader{
+        display: inline-block;
+        width: 100px;
+      }
+    }
+    .jsonText{
+      margin-top: 10px;
     }
   }
 }
