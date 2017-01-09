@@ -17,7 +17,7 @@ class client extends Component {
 
   componentDidMount() {
     //获取项目列表
-    // this.props.getResult()
+    this.props.getResult()
   }
 
   handleSubmit(e) {
@@ -48,13 +48,13 @@ class client extends Component {
           </Col>
           <Col span="19">
             <Card className="response" title="返回结果" style={{ width: '100%',minHeight: 500 }}>
-              <p className="resultInfo">
+              <div className="resultInfo">
                 <ul>
                   <li><Icon className="ok" type="check-circle"/><span className="resheader">Status：</span><span
                     className="Text">200</span></li>
                   <li><Icon className="error" type="close-circle"/><span className="resheader">StatusText：</span><span className="Text">OK</span></li>
                 </ul>
-              </p>
+              </div>
               <Input className="jsonText" type="textarea" rows={16}/>
             </Card>
           </Col>

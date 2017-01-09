@@ -12,10 +12,18 @@ const config = require('../config')
 const paths = config.utils_paths
 
 // require middleware.
-app.use(views(__dirname, {map: {html: 'nunjucks'}}))
+app.use(views(__dirname));
 app.use(require('koa-bodyparser')());
 app.use(json());
 app.use(logger());
+
+//history路由地址刷新 访问 避免 404
+app.use(function *(next) {
+  if (this.method == 'GET' && this.accepts().indexOf('text/html') > -1) {
+    this.url = '/index.html'
+  }
+  yield next
+})
 // ------------------------------------
 // Apply Webpack HMR Middleware
 // ------------------------------------
@@ -41,9 +49,14 @@ if (config.env === 'development') {
 // ------------------------------------
 // router
 // ------------------------------------
-// router.use('*', function*() {
-//   yield this.render('index.html');
-// });
+router.get('/getProduction', function *(next) {
+  this.body = {text: 'OK'}
+});
+// router.use('/', router.routes(), router.allowedMethods());
+router.use('/api', router.routes(), router.allowedMethods());
+app
+  .use(router.routes())
+  .use(router.allowedMethods());
 
 app.on('error', function (err, ctx) {
   logger.error('server error', err, ctx);
