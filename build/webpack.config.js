@@ -3,7 +3,7 @@ const cssnano = require('cssnano')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const config = require('../config')
-const debug = require('debug')('app:webpack:config')
+const debug = require('debug')('web:webpack:config')
 
 const paths = config.utils_paths
 const __DEV__ = config.globals.__DEV__

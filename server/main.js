@@ -1,21 +1,9 @@
 const app = require('koa')()
-const router = require('koa-router')()
-const views = require('koa-views')
-const logger = require('koa-logger')
-const json = require('koa-json')
-const onerror = require('koa-onerror');
-const api = require('./api')
-const debug = require('debug')('app:server')
+const debug = require('debug')('web:server')
 const webpack = require('webpack')
 const webpackConfig = require('../build/webpack.config')
 const config = require('../config')
 const paths = config.utils_paths
-
-// require middleware.
-app.use(views(__dirname));
-app.use(require('koa-bodyparser')());
-app.use(json());
-app.use(logger());
 
 //history路由地址刷新 访问 避免 404
 app.use(function *(next) {
@@ -44,22 +32,7 @@ if (config.env === 'development') {
   app.use(webpackHotMiddleware(compiler))
   app.use(require('koa-static')(paths.client('static')));
 } else {
-  app.use(require('koa-static')(_paths.dist()));
+  // 生产环境中 后端服务与前端 共用用一个服务器
+  require('./koa')(app)
 }
-// ------------------------------------
-// router
-// ------------------------------------
-router.get('/getProduction', function *(next) {
-  this.body = {text: 'OK'}
-});
-// router.use('/', router.routes(), router.allowedMethods());
-router.use('/api', router.routes(), router.allowedMethods());
-app
-  .use(router.routes())
-  .use(router.allowedMethods());
-
-app.on('error', function (err, ctx) {
-  logger.error('server error', err, ctx);
-});
-
 module.exports = app

@@ -1,3 +1,23 @@
+# 接口生成器
+
+### 准备
+
+react 和 koa 方面的只是
+
+### 安装依赖
+`npm install`
+`npm install supervisor -g`
+
+### 启动前端
+`npm start`
+
+### 后端后端
+`supervisor bin/services`
+
+
+
+
+
 一.ACTION 规范
 
   1.ACTION
